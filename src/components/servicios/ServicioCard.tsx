@@ -1,21 +1,17 @@
 import React from 'react';
 import Card from '../shared/Card';
 import { useThemeColors } from '@/hooks/useThemeColors';
-
-interface ServicioCardProps {
-  titulo: string;
-  descripcion: string;
-}
+import { ServicioCardProps } from '@/types';
 
 const ServicioCard: React.FC<ServicioCardProps> = ({ titulo, descripcion }) => {
   const { text, textSecondary } = useThemeColors();
 
   return (
-    <Card>
-      <h3 className="text-xl font-semibold mb-4" style={{ color: text }}>
+    <Card className="p-4 md:p-6 h-full">
+      <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4" style={{ color: text }}>
         {titulo}
       </h3>
-      <p style={{ color: textSecondary }} className="leading-relaxed">
+      <p style={{ color: textSecondary }} className="text-sm sm:text-base leading-relaxed">
         {descripcion}
       </p>
     </Card>
