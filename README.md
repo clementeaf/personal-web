@@ -1,40 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Portfolio Personal de Clemente Falcone
 
-## Getting Started
+Este es un sitio web de portfolio personal desarrollado con Next.js, TypeScript y Tailwind CSS.
 
-First, run the development server:
+![Portfolio Preview](./public/og-image.jpg)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Características
+
+- ✨ Diseño moderno y minimalista
+- 🌓 Modo claro/oscuro con transiciones suaves
+- 📱 Totalmente responsive para todos los dispositivos
+- ⚡ Animaciones fluidas con Framer Motion
+- 🎮 Navegación interactiva (rueda, teclado, gestos táctiles)
+- 🤖 Asistente IA integrado
+- 🔍 Optimizado para SEO con Schema.org
+
+## Tecnologías Utilizadas
+
+- **Next.js** - Framework de React para renderizado del lado del servidor
+- **TypeScript** - Tipado estático para un código más robusto
+- **Tailwind CSS** - Framework CSS utility-first
+- **Framer Motion** - Biblioteca de animaciones para React
+- **Three.js** - Biblioteca 3D para la web
+- **Jest** - Framework de testing para JavaScript
+- **React Testing Library** - Utilidades para testing de componentes React
+
+## Estructura del Proyecto
+
+```
+/src
+  /components
+    /contacto      # Componentes específicos para la sección de contacto
+    /home          # Componentes específicos para la sección de inicio
+    /proyectos     # Componentes específicos para la sección de proyectos
+    /servicios     # Componentes específicos para la sección de servicios
+    /shared        # Componentes compartidos (Card, SectionTitle, etc.)
+  /constants       # Constantes y datos estáticos
+  /hooks           # Custom hooks (useThemeColors, etc.)
+  /pages           # Páginas de Next.js
+  /types           # Interfaces y tipos TypeScript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Instalación
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. Clona el repositorio:
+```bash
+git clone https://github.com/clementeaf/personal-web.git
+cd personal-web
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+2. Instala las dependencias:
+```bash
+npm install
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+3. Ejecuta el servidor de desarrollo:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-## Learn More
+## Scripts Disponibles
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Construye la aplicación para producción
+- `npm run start` - Inicia la aplicación en modo producción
+- `npm run lint` - Ejecuta el linter para buscar errores
+- `npm run test` - Ejecuta las pruebas
+- `npm run test:watch` - Ejecuta las pruebas en modo watch
+- `npm run test:coverage` - Genera un informe de cobertura de código
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## Despliegue
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Este proyecto puede ser desplegado en cualquier plataforma que soporte Next.js, como Vercel, Netlify o AWS Amplify.
 
-## Deploy on Vercel
+## Licencia
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## Contacto
+
+Clemente Falcone - [carriagadafalcone@gmail.com](mailto:carriagadafalcone@gmail.com)
+
+Enlaces:
+- [LinkedIn](https://linkedin.com/in/clemente-falcone)
+- [GitHub](https://github.com/clementeaf)
