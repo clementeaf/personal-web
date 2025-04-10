@@ -1,17 +1,6 @@
 import { useEffect } from 'react';
-import { useSwipeable, SwipeableHandlers } from 'react-swipeable';
-import { UseNavigationReturn } from './useNavigation';
-
-interface UseNavigationControlsOptions {
-  enableKeyboard?: boolean;
-  enableWheel?: boolean;
-  enableSwipe?: boolean;
-  scrollDebounceMs?: number;
-}
-
-interface UseNavigationControlsReturn {
-  swipeHandlers: SwipeableHandlers;
-}
+import { useSwipeable } from 'react-swipeable';
+import { UseNavigationReturn, UseNavigationControlsOptions, UseNavigationControlsReturn } from '@/types';
 
 export function useNavigationControls(
   navigation: UseNavigationReturn,

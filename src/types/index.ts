@@ -29,4 +29,31 @@ export type FormState = {
 
 export type SendStatus = 'idle' | 'pending' | 'success' | 'error';
 
-export type ViewName = 'home' | 'servicios' | 'proyectos' | 'contacto'; 
+export type ViewName = 'home' | 'servicios' | 'proyectos' | 'contacto';
+
+// Interfaces para hooks de navegación
+export interface UseNavigationOptions {
+  initialView?: ViewName;
+  transitionDuration?: number;
+}
+
+export interface UseNavigationReturn {
+  currentView: ViewName;
+  isTransitioning: boolean;
+  navigateTo: (view: ViewName) => void;
+  navigateNext: () => void;
+  navigatePrev: () => void;
+  navigateToFirst: () => void;
+  navigateToLast: () => void;
+}
+
+export interface UseNavigationControlsOptions {
+  enableKeyboard?: boolean;
+  enableWheel?: boolean;
+  enableSwipe?: boolean;
+  scrollDebounceMs?: number;
+}
+
+export interface UseNavigationControlsReturn {
+  swipeHandlers: any; // SwipeableHandlers de react-swipeable
+} 

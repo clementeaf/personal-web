@@ -1,21 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
-import { ViewName } from '@/types';
+import { ViewName, UseNavigationOptions, UseNavigationReturn } from '@/types';
 import { NAVIGATION_MAP } from '@/constants';
-
-interface UseNavigationOptions {
-  initialView?: ViewName;
-  transitionDuration?: number;
-}
-
-export interface UseNavigationReturn {
-  currentView: ViewName;
-  isTransitioning: boolean;
-  navigateTo: (view: ViewName) => void;
-  navigateNext: () => void;
-  navigatePrev: () => void;
-  navigateToFirst: () => void;
-  navigateToLast: () => void;
-}
 
 export function useNavigation({
   initialView = 'home', 
