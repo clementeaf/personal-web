@@ -12,11 +12,13 @@ const geist = Geist({
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme()
+  const isDark = theme === 'dark';
   
   return (
     <button 
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="dark:text-white/70 text-black/60 hover:text-black dark:hover:text-white text-base font-normal tracking-wider transition-colors"
+      style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)' }}
+      className="text-base font-normal tracking-wider transition-colors hover:text-black dark:hover:text-white"
       aria-label="Cambiar tema"
     >
       {theme === 'dark' ? 'Oscuro' : 'Claro'}
@@ -25,18 +27,32 @@ function ThemeToggle() {
 }
 
 function HomeView({ isActive }: { isActive: boolean }) {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   return (
     <div className={`fixed inset-0 flex flex-col justify-center transition-all duration-500 ${
       isActive ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-8 pointer-events-none'
     }`}>
       <div className="container mx-auto px-8">
         <div className="max-w-2xl">
-          <h1 className="dark:text-white text-black text-[8rem] font-bold leading-none tracking-tight">
-            Clemente Falcone
+          <h1 
+            className="text-[8rem] font-bold leading-none tracking-tight"
+            style={{ color: isDark ? '#ffffff' : '#000000' }}
+          >
+            Clemente
+            <br />
+            Falcone
           </h1>
           <div className="flex items-center gap-4 mt-4">
-            <div className="h-[1px] w-12 dark:bg-white/30 bg-black/30"></div>
-            <span className="dark:text-white/50 text-black/60 text-sm tracking-[0.2em] uppercase">
+            <div 
+              className="h-[1px] w-12"
+              style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)' }}
+            />
+            <span 
+              className="text-sm tracking-[0.2em] uppercase"
+              style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.6)' }}
+            >
               Software Engineer
             </span>
           </div>
@@ -47,35 +63,38 @@ function HomeView({ isActive }: { isActive: boolean }) {
 }
 
 function ServiciosView({ isActive }: { isActive: boolean }) {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   return (
     <div className={`fixed inset-0 flex flex-col justify-center transition-all duration-500 ${
       isActive ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-8 pointer-events-none'
     }`}>
       <div className="container mx-auto px-8">
         <div className="max-w-4xl">
-          <h2 className="dark:text-white text-black text-5xl font-bold mb-12">Servicios</h2>
+          <h2 className="text-5xl font-bold mb-12" style={{ color: isDark ? '#ffffff' : '#000000' }}>Servicios</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="dark:bg-white/5 bg-black/5 backdrop-blur-sm rounded-lg p-8 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-              <h3 className="dark:text-white text-black text-xl font-semibold mb-4">Desarrollo Web</h3>
-              <p className="dark:text-white/70 text-black/70 leading-relaxed">
+            <div className="bg-black/5 dark:bg-white/5 backdrop-blur-sm rounded-lg p-8 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+              <h3 className="text-xl font-semibold mb-4" style={{ color: isDark ? '#ffffff' : '#000000' }}>Desarrollo Web</h3>
+              <p style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)' }} className="leading-relaxed">
                 Creación de sitios web modernos y aplicaciones web utilizando las últimas tecnologías y mejores prácticas.
               </p>
             </div>
-            <div className="dark:bg-white/5 bg-black/5 backdrop-blur-sm rounded-lg p-8 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-              <h3 className="dark:text-white text-black text-xl font-semibold mb-4">Aplicaciones Móviles</h3>
-              <p className="dark:text-white/70 text-black/70 leading-relaxed">
+            <div className="bg-black/5 dark:bg-white/5 backdrop-blur-sm rounded-lg p-8 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+              <h3 className="text-xl font-semibold mb-4" style={{ color: isDark ? '#ffffff' : '#000000' }}>Aplicaciones Móviles</h3>
+              <p style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)' }} className="leading-relaxed">
                 Desarrollo de aplicaciones nativas y multiplataforma para iOS y Android.
               </p>
             </div>
-            <div className="dark:bg-white/5 bg-black/5 backdrop-blur-sm rounded-lg p-8 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-              <h3 className="dark:text-white text-black text-xl font-semibold mb-4">Consultoría Técnica</h3>
-              <p className="dark:text-white/70 text-black/70 leading-relaxed">
+            <div className="bg-black/5 dark:bg-white/5 backdrop-blur-sm rounded-lg p-8 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+              <h3 className="text-xl font-semibold mb-4" style={{ color: isDark ? '#ffffff' : '#000000' }}>Consultoría Técnica</h3>
+              <p style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)' }} className="leading-relaxed">
                 Asesoramiento en arquitectura de software, optimización y mejores prácticas de desarrollo.
               </p>
             </div>
-            <div className="dark:bg-white/5 bg-black/5 backdrop-blur-sm rounded-lg p-8 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-              <h3 className="dark:text-white text-black text-xl font-semibold mb-4">UI/UX Design</h3>
-              <p className="dark:text-white/70 text-black/70 leading-relaxed">
+            <div className="bg-black/5 dark:bg-white/5 backdrop-blur-sm rounded-lg p-8 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+              <h3 className="text-xl font-semibold mb-4" style={{ color: isDark ? '#ffffff' : '#000000' }}>UI/UX Design</h3>
+              <p style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)' }} className="leading-relaxed">
                 Diseño de interfaces modernas y experiencias de usuario intuitivas y atractivas.
               </p>
             </div>
@@ -88,6 +107,8 @@ function ServiciosView({ isActive }: { isActive: boolean }) {
 
 function ProyectosView({ isActive }: { isActive: boolean }) {
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const projects = [
     {
@@ -119,22 +140,23 @@ function ProyectosView({ isActive }: { isActive: boolean }) {
     }`}>
       <div className="container mx-auto px-8">
         <div className="max-w-4xl">
-          <h2 className="dark:text-white text-black text-5xl font-bold mb-12">Proyectos</h2>
+          <h2 className="text-5xl font-bold mb-12" style={{ color: isDark ? '#ffffff' : '#000000' }}>Proyectos</h2>
           <div className="space-y-4">
             {projects.map((project) => (
               <div 
                 key={project.id}
-                className="dark:bg-white/5 bg-black/5 backdrop-blur-sm rounded-lg overflow-hidden transition-all duration-300"
+                className="bg-black/5 dark:bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden transition-all duration-300"
               >
                 <button
                   onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
-                  className="w-full flex items-center justify-between p-6 hover:dark:bg-white/10 hover:bg-black/10 transition-all duration-500"
+                  className="w-full flex items-center justify-between p-6 hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-500"
                 >
-                  <h3 className="dark:text-white text-black text-xl font-semibold">
+                  <h3 className="text-xl font-semibold" style={{ color: isDark ? '#ffffff' : '#000000' }}>
                     {project.name}
                   </h3>
                   <svg
-                    className={`w-5 h-5 dark:text-white/70 text-black/60 transform transition-transform duration-500 ease-in-out ${
+                    style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)' }}
+                    className={`w-5 h-5 transform transition-transform duration-500 ease-in-out ${
                       expandedProject === project.id ? 'rotate-180' : ''
                     }`}
                     fill="none"
@@ -156,7 +178,7 @@ function ProyectosView({ isActive }: { isActive: boolean }) {
                   <div className={`px-6 pb-6 space-y-6 transform transition-all duration-700 ease-in-out ${
                     expandedProject === project.id ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                   }`}>
-                    <p className="dark:text-white/70 text-black/70 leading-relaxed">
+                    <p style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)' }} className="leading-relaxed">
                       {project.description}
                     </p>
                     <div className="aspect-video rounded-lg overflow-hidden bg-black/20 dark:bg-white/20">
@@ -171,7 +193,8 @@ function ProyectosView({ isActive }: { isActive: boolean }) {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 dark:text-white/70 text-black/60 hover:dark:text-white hover:text-black transition-colors"
+                        style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)' }}
+                        className="inline-flex items-center gap-2 hover:text-black dark:hover:text-white transition-colors"
                       >
                         <span>Ver proyecto</span>
                         <svg
@@ -209,6 +232,8 @@ function ContactoView({ isActive, onOpenChat }: { isActive: boolean; onOpenChat:
   const [isTyping, setIsTyping] = useState<string | null>(null);
   const [isSending, setIsSending] = useState(false);
   const [sendStatus, setSendStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -230,7 +255,7 @@ function ContactoView({ isActive, onOpenChat }: { isActive: boolean; onOpenChat:
     }`}>
       <div className="container mx-auto px-8">
         <div className="max-w-4xl">
-          <h2 className="dark:text-white text-black text-5xl font-bold mb-12">Contacto</h2>
+          <h2 className="text-5xl font-bold mb-12" style={{ color: isDark ? '#ffffff' : '#000000' }}>Contacto</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Formulario */}
@@ -243,21 +268,13 @@ function ContactoView({ isActive, onOpenChat }: { isActive: boolean; onOpenChat:
                   onChange={e => setFormState(prev => ({ ...prev, name: e.target.value }))}
                   onFocus={() => handleInputFocus('name')}
                   onBlur={handleInputBlur}
-                  className="w-full bg-transparent dark:text-white text-black border-b dark:border-white/10 border-black/10 px-0 py-4 focus:outline-none focus:border-blue-500 peer placeholder-transparent"
+                  style={{ color: isDark ? '#ffffff' : '#000000' }}
+                  className="w-full bg-transparent border-b border-black/10 dark:border-white/10 px-0 py-4 focus:outline-none focus:border-blue-500 peer placeholder-transparent"
                   placeholder="Nombre"
                 />
-                <label className="absolute left-0 -top-2 text-sm dark:text-white/50 text-black/50 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-sm transition-all">
+                <label style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)' }} className="absolute left-0 -top-2 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-sm transition-all">
                   Nombre
                 </label>
-                {isTyping === 'name' && (
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2">
-                    <div className="flex gap-1">
-                      <div className="w-1 h-1 rounded-full dark:bg-white/40 bg-black/40 animate-pulse" />
-                      <div className="w-1 h-1 rounded-full dark:bg-white/40 bg-black/40 animate-pulse delay-75" />
-                      <div className="w-1 h-1 rounded-full dark:bg-white/40 bg-black/40 animate-pulse delay-150" />
-                    </div>
-                  </div>
-                )}
               </div>
 
               <div className="relative">
@@ -268,21 +285,13 @@ function ContactoView({ isActive, onOpenChat }: { isActive: boolean; onOpenChat:
                   onChange={e => setFormState(prev => ({ ...prev, email: e.target.value }))}
                   onFocus={() => handleInputFocus('email')}
                   onBlur={handleInputBlur}
-                  className="w-full bg-transparent dark:text-white text-black border-b dark:border-white/10 border-black/10 px-0 py-4 focus:outline-none focus:border-blue-500 peer placeholder-transparent"
+                  style={{ color: isDark ? '#ffffff' : '#000000' }}
+                  className="w-full bg-transparent border-b border-black/10 dark:border-white/10 px-0 py-4 focus:outline-none focus:border-blue-500 peer placeholder-transparent"
                   placeholder="Email"
                 />
-                <label className="absolute left-0 -top-2 text-sm dark:text-white/50 text-black/50 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-sm transition-all">
+                <label style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)' }} className="absolute left-0 -top-2 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-sm transition-all">
                   Email
                 </label>
-                {isTyping === 'email' && (
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2">
-                    <div className="flex gap-1">
-                      <div className="w-1 h-1 rounded-full dark:bg-white/40 bg-black/40 animate-pulse" />
-                      <div className="w-1 h-1 rounded-full dark:bg-white/40 bg-black/40 animate-pulse delay-75" />
-                      <div className="w-1 h-1 rounded-full dark:bg-white/40 bg-black/40 animate-pulse delay-150" />
-                    </div>
-                  </div>
-                )}
               </div>
 
               <div className="relative">
@@ -293,39 +302,31 @@ function ContactoView({ isActive, onOpenChat }: { isActive: boolean; onOpenChat:
                   onFocus={() => handleInputFocus('message')}
                   onBlur={handleInputBlur}
                   rows={4}
-                  className="w-full bg-transparent dark:text-white text-black border-b dark:border-white/10 border-black/10 px-0 py-4 focus:outline-none focus:border-blue-500 peer placeholder-transparent resize-none"
+                  style={{ color: isDark ? '#ffffff' : '#000000' }}
+                  className="w-full bg-transparent border-b border-black/10 dark:border-white/10 px-0 py-4 focus:outline-none focus:border-blue-500 peer placeholder-transparent resize-none"
                   placeholder="Mensaje"
                 />
-                <label className="absolute left-0 -top-2 text-sm dark:text-white/50 text-black/50 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-sm transition-all">
+                <label style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)' }} className="absolute left-0 -top-2 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-sm transition-all">
                   Mensaje
                 </label>
-                {isTyping === 'message' && (
-                  <div className="absolute right-0 top-6">
-                    <div className="flex gap-1">
-                      <div className="w-1 h-1 rounded-full dark:bg-white/40 bg-black/40 animate-pulse" />
-                      <div className="w-1 h-1 rounded-full dark:bg-white/40 bg-black/40 animate-pulse delay-75" />
-                      <div className="w-1 h-1 rounded-full dark:bg-white/40 bg-black/40 animate-pulse delay-150" />
-                    </div>
-                  </div>
-                )}
               </div>
 
               <button
                 type="submit"
                 disabled={isSending}
-                className="group relative overflow-hidden px-6 py-3 rounded-lg dark:bg-white/5 bg-black/5 hover:dark:bg-white/10 hover:bg-black/10 transition-colors"
+                className="group relative overflow-hidden px-6 py-3 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
               >
-                <div className={`absolute inset-0 dark:bg-white/10 bg-black/10 transition-transform duration-300 ${
+                <div className={`absolute inset-0 bg-black/10 dark:bg-white/10 transition-transform duration-300 ${
                   isSending ? 'translate-x-0' : '-translate-x-full'
                 }`} />
-                <span className="relative flex items-center gap-2 dark:text-white text-black">
+                <span className="relative flex items-center gap-2" style={{ color: isDark ? '#ffffff' : '#000000' }}>
                   {isSending ? (
                     <>
                       <span>Enviando</span>
                       <div className="flex gap-1">
-                        <div className="w-1 h-1 rounded-full dark:bg-white bg-black animate-bounce" />
-                        <div className="w-1 h-1 rounded-full dark:bg-white bg-black animate-bounce delay-75" />
-                        <div className="w-1 h-1 rounded-full dark:bg-white bg-black animate-bounce delay-150" />
+                        <div className="w-1 h-1 rounded-full animate-bounce" style={{ background: isDark ? '#ffffff' : '#000000' }} />
+                        <div className="w-1 h-1 rounded-full animate-bounce delay-75" style={{ background: isDark ? '#ffffff' : '#000000' }} />
+                        <div className="w-1 h-1 rounded-full animate-bounce delay-150" style={{ background: isDark ? '#ffffff' : '#000000' }} />
                       </div>
                     </>
                   ) : (
@@ -348,64 +349,59 @@ function ContactoView({ isActive, onOpenChat }: { isActive: boolean; onOpenChat:
                   )}
                 </span>
               </button>
-
-              {sendStatus === 'success' && (
-                <div className="flex items-center gap-2 text-green-500">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Mensaje enviado correctamente</span>
-                </div>
-              )}
             </form>
 
             {/* Info de contacto */}
             <div className="space-y-8">
-              <div className="dark:bg-white/5 bg-black/5 backdrop-blur-sm rounded-lg p-6 space-y-4">
-                <h3 className="dark:text-white text-black text-xl font-semibold">Información de contacto</h3>
+              <div className="bg-black/5 dark:bg-white/5 backdrop-blur-sm rounded-lg p-6 space-y-4">
+                <h3 className="text-xl font-semibold" style={{ color: isDark ? '#ffffff' : '#000000' }}>Información de contacto</h3>
                 <div className="space-y-4">
                   <a 
-                    href="mailto:contacto@clementefalcone.com" 
-                    className="flex items-center gap-3 dark:text-white/70 text-black/70 hover:dark:text-white hover:text-black transition-colors"
+                    href="mailto:carriagadafalcone@gmail.com" 
+                    style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)' }}
+                    className="flex items-center gap-3 hover:text-black dark:hover:text-white transition-colors"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span>contacto@clementefalcone.com</span>
+                    <span>carriagadafalcone@gmail.com</span>
                   </a>
                   <a 
-                    href="https://linkedin.com/in/clementefalcone" 
+                    href="https://linkedin.com/in/clemente-falcone" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 dark:text-white/70 text-black/70 hover:dark:text-white hover:text-black transition-colors"
+                    style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)' }}
+                    className="flex items-center gap-3 hover:text-black dark:hover:text-white transition-colors"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span>linkedin.com/in/clementefalcone</span>
+                    <span>linkedin.com/in/clemente-falcone</span>
                   </a>
                   <a 
-                    href="https://github.com/clementefalcone" 
+                    href="https://github.com/clementeaf" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 dark:text-white/70 text-black/70 hover:dark:text-white hover:text-black transition-colors"
+                    style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)' }}
+                    className="flex items-center gap-3 hover:text-black dark:hover:text-white transition-colors"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
-                    <span>github.com/clementefalcone</span>
+                    <span>github.com/clementeaf</span>
                   </a>
                 </div>
               </div>
 
-              <div className="dark:bg-white/5 bg-black/5 backdrop-blur-sm rounded-lg p-6">
-                <h3 className="dark:text-white text-black text-xl font-semibold mb-4">¿Prefieres el chat?</h3>
-                <p className="dark:text-white/70 text-black/70 leading-relaxed mb-4">
+              <div className="bg-black/5 dark:bg-white/5 backdrop-blur-sm rounded-lg p-6">
+                <h3 className="text-xl font-semibold mb-4" style={{ color: isDark ? '#ffffff' : '#000000' }}>¿Prefieres el chat?</h3>
+                <p style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)' }} className="leading-relaxed mb-4">
                   También puedes contactarme a través del asistente IA. Estará encantado de ayudarte y responder tus preguntas.
                 </p>
                 <button 
                   onClick={onOpenChat}
-                  className="group flex items-center gap-2 dark:text-white/70 text-black/70 hover:dark:text-white hover:text-black transition-colors"
+                  style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)' }}
+                  className="group flex items-center gap-2 hover:text-black dark:hover:text-white transition-colors"
                 >
                   <span>Iniciar chat</span>
                   <svg 
@@ -438,10 +434,14 @@ export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const lastScrollTime = useRef(Date.now());
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const { setTheme, theme } = useTheme();
+  const isDark = theme === 'dark';
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+    // Forzar el tema claro al inicio
+    setTheme('light');
+  }, []);
 
   const handleViewChange = (view: string) => {
     if (currentView === view || isTransitioning) return;
@@ -488,7 +488,7 @@ export default function Home() {
   }, [currentView, isTransitioning]);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark">
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
       <GridBackground />
       
       <div className={`${geist.className} fixed inset-0`}>
@@ -504,31 +504,53 @@ export default function Home() {
             {mounted && <ThemeToggle />}
             <button 
               onClick={() => handleViewChange('servicios')}
-              className={`dark:text-white/70 text-black/60 hover:text-black dark:hover:text-white text-base font-normal tracking-wider transition-colors ${
-                currentView === 'servicios' ? 'dark:!text-white !text-black' : ''
-              }`}
+              style={{ 
+                color: isDark 
+                  ? currentView === 'servicios' 
+                    ? '#ffffff' 
+                    : 'rgba(255,255,255,0.7)' 
+                  : currentView === 'servicios'
+                    ? '#000000'
+                    : 'rgba(0,0,0,0.6)'
+              }}
+              className="text-base font-normal tracking-wider transition-colors hover:text-black dark:hover:text-white"
             >
               Servicios
             </button>
             <button 
               onClick={() => handleViewChange('proyectos')}
-              className={`dark:text-white/70 text-black/60 hover:text-black dark:hover:text-white text-base font-normal tracking-wider transition-colors ${
-                currentView === 'proyectos' ? 'dark:!text-white !text-black' : ''
-              }`}
+              style={{ 
+                color: isDark 
+                  ? currentView === 'proyectos' 
+                    ? '#ffffff' 
+                    : 'rgba(255,255,255,0.7)' 
+                  : currentView === 'proyectos'
+                    ? '#000000'
+                    : 'rgba(0,0,0,0.6)'
+              }}
+              className="text-base font-normal tracking-wider transition-colors hover:text-black dark:hover:text-white"
             >
               Proyectos
             </button>
             <button 
               onClick={() => handleViewChange('contacto')}
-              className={`dark:text-white/70 text-black/60 hover:text-black dark:hover:text-white text-base font-normal tracking-wider transition-colors ${
-                currentView === 'contacto' ? 'dark:!text-white !text-black' : ''
-              }`}
+              style={{ 
+                color: isDark 
+                  ? currentView === 'contacto' 
+                    ? '#ffffff' 
+                    : 'rgba(255,255,255,0.7)' 
+                  : currentView === 'contacto'
+                    ? '#000000'
+                    : 'rgba(0,0,0,0.6)'
+              }}
+              className="text-base font-normal tracking-wider transition-colors hover:text-black dark:hover:text-white"
             >
               Contacto
             </button>
             <button 
               onClick={() => setIsChatOpen(true)}
-              className="group flex items-center gap-2 dark:text-white/70 text-black/60 hover:text-black dark:hover:text-white text-base font-normal tracking-wider transition-colors"
+              style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)' }}
+              className="group flex items-center gap-2 text-base font-normal tracking-wider transition-colors hover:text-black dark:hover:text-white"
             >
               <span>Asistente IA</span>
               <svg 

@@ -109,9 +109,9 @@ export default function Background() {
   const isDark = theme === 'dark'
 
   return (
-    <div className={`fixed inset-0 ${isDark ? 'bg-[#050505]' : 'bg-[#e5e5e5]'} overflow-hidden transition-colors duration-300`}>
+    <div className={`fixed inset-0 ${isDark ? 'bg-[#050505]' : 'bg-[#f5f5f5]'} overflow-hidden transition-colors duration-300`}>
       <div 
-        className={`absolute inset-0 ${isDark ? 'opacity-[0.25]' : 'opacity-[0.2]'} animate-tv-noise`}
+        className={`absolute inset-0 ${isDark ? 'opacity-[0.25]' : 'opacity-[0.15]'} animate-tv-noise`}
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' fill='${isDark ? 'white' : 'black'}'/%3E%3C/svg%3E")`,
           backgroundRepeat: 'repeat',
@@ -120,7 +120,7 @@ export default function Background() {
         }}
       />
       <div 
-        className={`absolute inset-0 ${isDark ? 'opacity-[0.2]' : 'opacity-[0.15]'} animate-tv-noise-fast`}
+        className={`absolute inset-0 ${isDark ? 'opacity-[0.2]' : 'opacity-[0.1]'} animate-tv-noise-fast`}
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' fill='${isDark ? 'white' : 'black'}'/%3E%3C/svg%3E")`,
           backgroundRepeat: 'repeat',
@@ -129,7 +129,7 @@ export default function Background() {
         }}
       />
       <div 
-        className={`absolute inset-0 ${isDark ? 'opacity-[0.15]' : 'opacity-[0.12]'} animate-tv-noise-slow`}
+        className={`absolute inset-0 ${isDark ? 'opacity-[0.15]' : 'opacity-[0.08]'} animate-tv-noise-slow`}
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' fill='${isDark ? 'white' : 'black'}'/%3E%3C/svg%3E")`,
           backgroundRepeat: 'repeat',
@@ -138,9 +138,9 @@ export default function Background() {
         }}
       />
       <div 
-        className={`absolute inset-0 ${isDark ? 'opacity-25' : 'opacity-20'} animate-scan`}
+        className={`absolute inset-0 ${isDark ? 'opacity-25' : 'opacity-15'} animate-scan`}
         style={{
-          background: `linear-gradient(transparent 2px, ${isDark ? '#050505' : '#e5e5e5'} 2px)`,
+          background: `linear-gradient(transparent 2px, ${isDark ? '#050505' : '#f5f5f5'} 2px)`,
           backgroundSize: '100% 3px'
         }}
       />
