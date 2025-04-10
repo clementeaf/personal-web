@@ -28,13 +28,13 @@ const SERVICIOS: Servicio[] = [
 
 const ServiciosView: React.FC<ServiciosViewProps> = ({ isActive }) => {
   return (
-    <div className={`fixed inset-0 flex flex-col justify-center transition-all duration-500 ${
+    <div className={`fixed inset-0 flex flex-col justify-start pt-20 md:justify-center md:pt-0 transition-all duration-500 ${
       isActive ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-8 pointer-events-none'
     }`}>
       <div className="container mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-0 overflow-y-auto md:overflow-visible">
         <div className="max-w-4xl mx-auto">
           <SectionTitle title="Servicios" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-4 md:mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
             {SERVICIOS.map(servicio => (
               <ServicioCard 
                 key={servicio.id}
