@@ -22,10 +22,12 @@ const ContactItem: React.FC<ContactItemProps> = ({
       rel={rel}
       onClick={onClick}
       style={{ color: textSecondary }}
-      className="flex items-center gap-3 hover:text-black dark:hover:text-white transition-colors"
+      className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base hover:text-black dark:hover:text-white transition-colors truncate"
     >
-      {icon}
-      <span>{label}</span>
+      <div className="flex-shrink-0">
+        {icon}
+      </div>
+      <span className="truncate">{label}</span>
     </a>
   );
 };

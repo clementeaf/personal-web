@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const EmailIcon: React.FC = () => (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path 
       strokeLinecap="round" 
       strokeLinejoin="round" 
@@ -12,7 +12,7 @@ export const EmailIcon: React.FC = () => (
 );
 
 export const LinkedInIcon: React.FC = () => (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path 
       strokeLinecap="round" 
       strokeLinejoin="round" 
@@ -23,7 +23,7 @@ export const LinkedInIcon: React.FC = () => (
 );
 
 export const GitHubIcon: React.FC = () => (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path 
       strokeLinecap="round" 
       strokeLinejoin="round" 
@@ -33,7 +33,7 @@ export const GitHubIcon: React.FC = () => (
   </svg>
 );
 
-export const ArrowRightIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
+export const ArrowRightIcon: React.FC<{ className?: string }> = ({ className = "w-3 h-3 sm:w-4 sm:h-4" }) => (
   <svg 
     className={`${className} transform transition-transform group-hover:translate-x-1`} 
     fill="none" 

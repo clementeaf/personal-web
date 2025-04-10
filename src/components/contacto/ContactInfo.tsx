@@ -12,10 +12,10 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ onOpenChat }) => {
   const { text, textSecondary } = useThemeColors();
 
   return (
-    <div className="space-y-8">
-      <Card>
-        <h3 className="text-xl font-semibold" style={{ color: text }}>Información de contacto</h3>
-        <div className="space-y-4 mt-4">
+    <div className="space-y-4 sm:space-y-6 md:space-y-8">
+      <Card className="p-4 md:p-6">
+        <h3 className="text-lg md:text-xl font-semibold" style={{ color: text }}>Información de contacto</h3>
+        <div className="space-y-3 md:space-y-4 mt-3 md:mt-4">
           <ContactItem 
             href="mailto:carriagadafalcone@gmail.com" 
             icon={<EmailIcon />}
@@ -40,9 +40,9 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ onOpenChat }) => {
         </div>
       </Card>
 
-      <Card>
-        <h3 className="text-xl font-semibold mb-4" style={{ color: text }}>¿Prefieres el chat?</h3>
-        <p style={{ color: textSecondary }} className="leading-relaxed mb-4">
+      <Card className="p-4 md:p-6">
+        <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-4" style={{ color: text }}>¿Prefieres el chat?</h3>
+        <p style={{ color: textSecondary }} className="text-sm md:text-base leading-relaxed mb-3 md:mb-4">
           También puedes contactarme a través del asistente IA. Estará encantado de ayudarte y responder tus preguntas.
         </p>
         <button 
