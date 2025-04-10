@@ -140,8 +140,9 @@ export default function Background() {
       <div 
         className={`absolute inset-0 ${isDark ? 'opacity-25' : 'opacity-15'} animate-scan`}
         style={{
-          background: `linear-gradient(transparent 2px, ${isDark ? '#050505' : '#f5f5f5'} 2px)`,
-          backgroundSize: '100% 3px'
+          backgroundImage: `linear-gradient(transparent 2px, ${isDark ? '#050505' : '#f5f5f5'} 2px)`,
+          backgroundSize: '100% 3px',
+          backgroundRepeat: 'repeat'
         }}
       />
     </div>

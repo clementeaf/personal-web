@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
 import { useThemeColors } from '@/hooks/useThemeColors';
-import { NAV_ITEMS } from '@/constants';
 import { NavigationProps, ViewName } from '@/types';
 
 const Navigation: React.FC<NavigationProps> = ({ 
@@ -9,14 +8,14 @@ const Navigation: React.FC<NavigationProps> = ({
   onChangeView,
   onOpenChat
 }) => {
-  const { text, textSecondary, isDark } = useThemeColors();
+  const { isDark } = useThemeColors();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
+    console.log('Toggling mobile menu:', !mobileMenuOpen);
     setMobileMenuOpen(prev => !prev);
   };
 
-  // Funciones simplificadas con console.log para depuración
   const handleNavClick = (view: ViewName) => {
     console.log('Navegando a:', view);
     onChangeView(view);
@@ -34,93 +33,108 @@ const Navigation: React.FC<NavigationProps> = ({
       {/* Header con fondo transparente */}
       <header className="fixed w-full p-4 md:p-8 flex justify-between items-center bg-transparent z-[100]">
         {/* Logo simplificado */}
-        <div 
-          className="text-lg font-bold text-black dark:text-white" 
-          style={{color: isDark ? 'white' : 'black'}}
-        >CF</div>
+        <div className="text-lg font-bold text-black dark:text-white" style={{color: mobileMenuOpen || isDark ? '#ffffff' : '#000000'}}>CF</div>
         
-        {/* Navegación simplificada de escritorio */}
-        <nav className="flex items-center gap-6">
-          <ThemeToggle />
+        {/* Navegación de escritorio y botón de menú móvil */}
+        <div className="flex items-center">
+          {/* Navegación en escritorio - oculta en móvil */}
+          <nav className="hidden md:flex items-center gap-6">
+            <ThemeToggle />
+            
+            {/* Botones de navegación directa sin mapeo */}
+            <button 
+              onClick={() => handleNavClick('servicios')}
+              className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
+              style={{pointerEvents: 'all'}}
+            >
+              Servicios
+            </button>
+            
+            <button 
+              onClick={() => handleNavClick('proyectos')}
+              className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
+              style={{pointerEvents: 'all'}}
+            >
+              Proyectos
+            </button>
+            
+            <button 
+              onClick={() => handleNavClick('contacto')}
+              className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
+              style={{pointerEvents: 'all'}}
+            >
+              Contacto
+            </button>
+            
+            <button 
+              onClick={handleChatClick}
+              className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
+              style={{pointerEvents: 'all'}}
+            >
+              IA
+            </button>
+          </nav>
           
-          {/* Botones de navegación directa sin mapeo */}
-          <button 
-            onClick={() => handleNavClick('servicios')}
-            className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
-            style={{pointerEvents: 'all', color: isDark ? 'white' : 'black'}}
-          >
-            Servicios
-          </button>
-          
-          <button 
-            onClick={() => handleNavClick('proyectos')}
-            className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
-            style={{pointerEvents: 'all', color: isDark ? 'white' : 'black'}}
-          >
-            Proyectos
-          </button>
-          
-          <button 
-            onClick={() => handleNavClick('contacto')}
-            className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
-            style={{pointerEvents: 'all', color: isDark ? 'white' : 'black'}}
-          >
-            Contacto
-          </button>
-          
-          <button 
-            onClick={handleChatClick}
-            className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
-            style={{pointerEvents: 'all', color: isDark ? 'white' : 'black'}}
-          >
-            IA
-          </button>
-        </nav>
+          {/* ThemeToggle y botón hamburguesa en móvil */}
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
+            <button 
+              onClick={toggleMobileMenu}
+              className="block relative w-8 h-6 cursor-pointer z-[101]"
+              aria-label="Menú de navegación"
+              style={{pointerEvents: 'all'}}
+            >
+              <span 
+                className={`absolute left-0 top-0 h-0.5 w-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`} style={{backgroundColor: mobileMenuOpen ? '#ffffff' : isDark ? '#ffffff' : '#000000'}}
+              ></span>
+              <span 
+                className={`absolute left-0 top-[11px] h-0.5 w-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} style={{backgroundColor: mobileMenuOpen ? '#ffffff' : isDark ? '#ffffff' : '#000000'}}
+              ></span>
+              <span 
+                className={`absolute left-0 bottom-0 h-0.5 w-full transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`} style={{backgroundColor: mobileMenuOpen ? '#ffffff' : isDark ? '#ffffff' : '#000000'}}
+              ></span>
+            </button>
+          </div>
+        </div>
       </header>
 
-      {/* Menú móvil simplificado sin efectos */}
+      {/* Menú móvil con animación simple */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-white dark:bg-black z-20 md:hidden">
-          <div className="flex flex-col items-center justify-center h-full">
-            <div className="flex flex-col items-center gap-10 p-6">
-              <ul className="flex flex-col items-center gap-10">
-                {NAV_ITEMS.map(item => (
-                  <li key={item.id} className="list-none">
-                    <button 
-                      onClick={() => handleNavClick(item.id as ViewName)}
-                      className={`text-2xl font-normal ${
-                        currentView === item.id 
-                          ? 'text-black dark:text-white font-medium' 
-                          : 'text-gray-600 dark:text-gray-300'
-                      }`}
-                    >
-                      {item.label === 'Proyectos' ? 'Proyectos' : item.label}
-                    </button>
-                  </li>
-                ))}
-                <li className="list-none">
-                  <button 
-                    onClick={handleChatClick}
-                    className="flex items-center gap-2 text-2xl font-normal text-gray-600 dark:text-gray-300"
-                  >
-                    <span>Asistente IA</span>
-                    <svg 
-                      className="w-5 h-5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M17 8l4 4m0 0l-4 4m4-4H3" 
-                      />
-                    </svg>
-                  </button>
-                </li>
-              </ul>
-            </div>
+        <div className="fixed inset-0 z-[90] md:hidden">
+          {/* Overlay semi-transparente */}
+          <div className="absolute inset-0 bg-white/90 dark:bg-black/90 backdrop-blur-sm" />
+          
+          {/* Contenido del menú */}
+          <div className="relative z-[91] flex flex-col items-center justify-center h-full">
+            <nav className="flex flex-col items-center gap-8">
+              <button 
+                onClick={() => handleNavClick('servicios')}
+                className="text-xl font-bold text-black dark:text-white"
+              >
+                Servicios
+              </button>
+              
+              <button 
+                onClick={() => handleNavClick('proyectos')}
+                className="text-xl font-bold text-black dark:text-white"
+              >
+                Proyectos
+              </button>
+              
+              <button 
+                onClick={() => handleNavClick('contacto')}
+                className="text-xl font-bold text-black dark:text-white"
+              >
+                Contacto
+              </button>
+              
+              <button 
+                onClick={handleChatClick}
+                className="text-xl font-bold text-black dark:text-white"
+              >
+                Asistente IA
+              </button>
+            </nav>
           </div>
         </div>
       )}
