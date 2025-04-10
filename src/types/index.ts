@@ -1,4 +1,5 @@
 // Interfaces compartidas para el proyecto
+import { ReactNode, ChangeEvent } from 'react';
 
 export interface Proyecto {
   id: number;
@@ -56,4 +57,93 @@ export interface UseNavigationControlsOptions {
 
 export interface UseNavigationControlsReturn {
   swipeHandlers: any; // SwipeableHandlers de react-swipeable
+}
+
+// Interfaces para componentes
+export interface HomeViewProps {
+  isActive: boolean;
+}
+
+export interface ServiciosViewProps {
+  isActive: boolean;
+}
+
+export interface ProyectosViewProps {
+  isActive: boolean;
+}
+
+export interface ContactoViewProps {
+  isActive: boolean;
+  onOpenChat: () => void;
+}
+
+export interface NavigationProps {
+  currentView: ViewName;
+  onChangeView: (view: ViewName) => void;
+  onOpenChat: () => void;
+}
+
+export interface SectionTitleProps {
+  title: string;
+}
+
+export interface CardProps {
+  children: ReactNode;
+  className?: string;
+  onClick?: () => void;
+}
+
+export interface ContactFormProps {
+  // Sin props adicionales por ahora
+}
+
+export interface FormFieldProps {
+  type?: 'text' | 'email' | 'textarea';
+  name: string;
+  label: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  disabled?: boolean;
+  required?: boolean;
+  rows?: number;
+}
+
+export interface StatusMessageProps {
+  status: SendStatus;
+  successMessage: string;
+  errorMessage: string;
+}
+
+export interface ContactInfoProps {
+  onOpenChat: () => void;
+}
+
+export interface ContactItemProps {
+  href: string;
+  icon: ReactNode;
+  label: string;
+  target?: string;
+  rel?: string;
+  onClick?: () => void;
+}
+
+export interface ProyectoCardProps {
+  proyecto: Proyecto;
+  isExpanded: boolean;
+  toggleExpand: () => void;
+}
+
+export interface ServicioCardProps {
+  titulo: string;
+  descripcion: string;
+}
+
+export interface ThemeToggleProps {
+  // Sin props adicionales por ahora
+}
+
+export interface SEOProps {
+  title?: string;
+  description?: string;
+  canonical?: string;
 } 

@@ -1,139 +1,138 @@
 import React, { useState } from 'react';
 import { useThemeColors } from '@/hooks/useThemeColors';
+import { FormState, SendStatus, ContactFormProps } from '@/types';
+import FormField from '@/components/ui/FormField';
+import StatusMessage from '@/components/ui/StatusMessage';
+import Card from '../shared/Card';
 
-interface FormState {
-  name: string;
-  email: string;
-  message: string;
-}
-
-const ContactForm: React.FC = () => {
+/**
+ * Componente principal de formulario de contacto
+ */
+const ContactForm: React.FC<ContactFormProps> = () => {
   const [formState, setFormState] = useState<FormState>({
     name: '',
     email: '',
     message: ''
   });
-  const [isTyping, setIsTyping] = useState<string | null>(null);
-  const [isSending, setIsSending] = useState(false);
-  const [sendStatus, setSendStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [sendStatus, setSendStatus] = useState<SendStatus>('idle');
   const { text, textSecondary } = useThemeColors();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormState(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSending(true);
-    setSendStatus('idle');
+    setSendStatus('pending');
 
     // Simular envío
     await new Promise(resolve => setTimeout(resolve, 1500));
     setSendStatus('success');
-    setIsSending(false);
+    
+    // Resetear formulario después de envío exitoso
+    setTimeout(() => {
+      setFormState({
+        name: '',
+        email: '',
+        message: ''
+      });
+      setSendStatus('idle');
+    }, 3000);
   };
 
-  const handleInputFocus = (field: string) => setIsTyping(field);
-  const handleInputBlur = () => setIsTyping(null);
+  const isFormDisabled = sendStatus === 'pending' || sendStatus === 'success';
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="relative">
-        <input
-          type="text"
-          required
+    <Card className="p-4 shadow-md dark:shadow-lg">
+      <form onSubmit={handleSubmit} className="space-y-4" aria-label="Formulario de contacto">
+        <div className="mb-3">
+          <h3 className="text-lg font-semibold mb-1" style={{ color: text }}>
+            Envíame un mensaje
+          </h3>
+          <p className="text-xs" style={{ color: textSecondary }}>
+            Completa el formulario para ponerte en contacto conmigo
+          </p>
+        </div>
+
+        <FormField
+          name="name"
+          label="Nombre"
           value={formState.name}
-          onChange={e => setFormState(prev => ({ ...prev, name: e.target.value }))}
-          onFocus={() => handleInputFocus('name')}
-          onBlur={handleInputBlur}
-          style={{ color: text }}
-          className="w-full bg-transparent border-b border-black/10 dark:border-white/10 px-0 py-4 focus:outline-none focus:border-blue-500 peer placeholder-transparent"
-          placeholder="Nombre"
+          onChange={handleChange}
+          disabled={isFormDisabled}
+          required
         />
-        <label 
-          style={{ color: textSecondary }}
-          className="absolute left-0 -top-2 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-sm transition-all"
-        >
-          Nombre
-        </label>
-      </div>
 
-      <div className="relative">
-        <input
+        <FormField
           type="email"
-          required
+          name="email"
+          label="Email"
           value={formState.email}
-          onChange={e => setFormState(prev => ({ ...prev, email: e.target.value }))}
-          onFocus={() => handleInputFocus('email')}
-          onBlur={handleInputBlur}
-          style={{ color: text }}
-          className="w-full bg-transparent border-b border-black/10 dark:border-white/10 px-0 py-4 focus:outline-none focus:border-blue-500 peer placeholder-transparent"
-          placeholder="Email"
-        />
-        <label 
-          style={{ color: textSecondary }}
-          className="absolute left-0 -top-2 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-sm transition-all"
-        >
-          Email
-        </label>
-      </div>
-
-      <div className="relative">
-        <textarea
+          onChange={handleChange}
+          disabled={isFormDisabled}
           required
-          value={formState.message}
-          onChange={e => setFormState(prev => ({ ...prev, message: e.target.value }))}
-          onFocus={() => handleInputFocus('message')}
-          onBlur={handleInputBlur}
-          rows={4}
-          style={{ color: text }}
-          className="w-full bg-transparent border-b border-black/10 dark:border-white/10 px-0 py-4 focus:outline-none focus:border-blue-500 peer placeholder-transparent resize-none"
-          placeholder="Mensaje"
         />
-        <label 
-          style={{ color: textSecondary }}
-          className="absolute left-0 -top-2 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-sm transition-all"
-        >
-          Mensaje
-        </label>
-      </div>
 
-      <button
-        type="submit"
-        disabled={isSending}
-        className="group relative overflow-hidden px-6 py-3 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
-      >
-        <div className={`absolute inset-0 bg-black/10 dark:bg-white/10 transition-transform duration-300 ${
-          isSending ? 'translate-x-0' : '-translate-x-full'
-        }`} />
-        <span className="relative flex items-center gap-2" style={{ color: text }}>
-          {isSending ? (
-            <>
-              <span>Enviando</span>
-              <div className="flex gap-1">
-                <div className="w-1 h-1 rounded-full animate-bounce" style={{ background: text }} />
-                <div className="w-1 h-1 rounded-full animate-bounce delay-75" style={{ background: text }} />
-                <div className="w-1 h-1 rounded-full animate-bounce delay-150" style={{ background: text }} />
-              </div>
-            </>
-          ) : (
-            <>
-              <span>Enviar mensaje</span>
-              <svg
-                className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </>
-          )}
-        </span>
-      </button>
-    </form>
+        <FormField
+          type="textarea"
+          name="message"
+          label="Mensaje"
+          value={formState.message}
+          onChange={handleChange}
+          disabled={isFormDisabled}
+          required
+          rows={3}
+        />
+
+        <StatusMessage 
+          status={sendStatus}
+          successMessage="¡Mensaje enviado con éxito! Gracias por contactarme."
+          errorMessage="Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo."
+        />
+
+        <button
+          type="submit"
+          disabled={isFormDisabled}
+          className="w-full group relative overflow-hidden px-6 py-2 rounded-lg border border-black/40 dark:border-white/40 hover:bg-gray-50 dark:hover:bg-white/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+          aria-label="Enviar mensaje"
+        >
+          <div className={`absolute inset-0 bg-black/5 dark:bg-black/10 transition-transform duration-300 ${
+            sendStatus === 'pending' ? 'translate-x-0' : '-translate-x-full'
+          }`} />
+          <span className="relative flex justify-center items-center gap-2 text-black dark:text-white group-hover:text-black transition-colors font-medium text-sm">
+            {sendStatus === 'pending' ? (
+              <>
+                <span>Enviando</span>
+                <div className="flex gap-1">
+                  <div className="w-1 h-1 rounded-full animate-bounce bg-black dark:bg-white group-hover:bg-black" />
+                  <div className="w-1 h-1 rounded-full animate-bounce delay-75 bg-black dark:bg-white group-hover:bg-black" />
+                  <div className="w-1 h-1 rounded-full animate-bounce delay-150 bg-black dark:bg-white group-hover:bg-black" />
+                </div>
+              </>
+            ) : (
+              <>
+                <span>Enviar mensaje</span>
+                <svg
+                  className="w-3 h-3 transform transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </>
+            )}
+          </span>
+        </button>
+      </form>
+    </Card>
   );
 };
 
-export default ContactForm; 
+export default ContactForm;

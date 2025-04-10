@@ -1,9 +1,6 @@
 import { useTheme } from 'next-themes';
 import React from 'react';
-
-interface SectionTitleProps {
-  title: string;
-}
+import { SectionTitleProps } from '@/types';
 
 const SectionTitle: React.FC<SectionTitleProps> = ({ title }) => {
   const { theme } = useTheme();

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useTheme } from 'next-themes';
+import { ThemeToggleProps } from '@/types';
 
-const ThemeToggle: React.FC = () => {
+const ThemeToggle: React.FC<ThemeToggleProps> = () => {
   const { theme, setTheme } = useTheme();
   const isDark = theme === 'dark';
   

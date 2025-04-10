@@ -2,11 +2,7 @@ import React from 'react';
 import SectionTitle from '../shared/SectionTitle';
 import ContactForm from './ContactForm';
 import ContactInfo from './ContactInfo';
-
-interface ContactoViewProps {
-  isActive: boolean;
-  onOpenChat: () => void;
-}
+import { ContactoViewProps } from '@/types';
 
 const ContactoView: React.FC<ContactoViewProps> = ({ isActive, onOpenChat }) => {
   return (

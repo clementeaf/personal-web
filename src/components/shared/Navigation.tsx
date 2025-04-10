@@ -2,13 +2,7 @@ import React from 'react';
 import ThemeToggle from './ThemeToggle';
 import { useThemeColors } from '@/hooks/useThemeColors';
 import { NAV_ITEMS } from '@/constants';
-import { ViewName } from '@/types';
-
-interface NavigationProps {
-  currentView: ViewName;
-  onChangeView: (view: ViewName) => void;
-  onOpenChat: () => void;
-}
+import { NavigationProps, ViewName } from '@/types';
 
 const Navigation: React.FC<NavigationProps> = ({ 
   currentView, 

@@ -1,12 +1,7 @@
 import Head from 'next/head';
 import { SEO_CONFIG } from '@/constants';
 import { Person, WithContext } from 'schema-dts';
-
-interface SEOProps {
-  title?: string;
-  description?: string;
-  canonical?: string;
-}
+import { SEOProps } from '@/types';
 
 const SEO: React.FC<SEOProps> = ({
   title = SEO_CONFIG.title,

@@ -1,10 +1,5 @@
-import React, { ReactNode } from 'react';
-
-interface CardProps {
-  children: ReactNode;
-  className?: string;
-  onClick?: () => void;
-}
+import React from 'react';
+import { CardProps } from '@/types';
 
 const Card: React.FC<CardProps> = ({ children, className = '', onClick }) => {
   return (
