@@ -8,10 +8,10 @@ const ProyectosView: React.FC<ProyectosViewProps> = ({ isActive }) => {
   const { text, textSecondary } = useThemeColors();
 
   return (
-    <div className={`fixed inset-0 flex flex-col justify-center transition-all duration-500 ${
+    <div className={`fixed inset-0 flex flex-col justify-start pt-16 sm:pt-20 md:pt-24 transition-all duration-500 ${
       isActive ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-8 pointer-events-none'
     }`}>
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-0 overflow-y-auto md:overflow-visible">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-6 overflow-y-auto">
         <div className="max-w-4xl mx-auto">
           <SectionTitle title="Proyectos" />
           

@@ -94,20 +94,20 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         <button
           type="submit"
           disabled={isFormDisabled}
-          className="w-full group relative overflow-hidden px-6 py-2 rounded-lg border border-black/40 dark:border-white/40 hover:bg-gray-50 dark:hover:bg-white/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+          className="w-full group relative overflow-hidden px-6 py-2 rounded-lg border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-white/10 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
           aria-label="Enviar mensaje"
         >
-          <div className={`absolute inset-0 bg-black/5 dark:bg-black/10 transition-transform duration-300 ${
+          <div className={`absolute inset-0 bg-black/5 dark:bg-white/5 transition-transform duration-300 ${
             sendStatus === 'pending' ? 'translate-x-0' : '-translate-x-full'
           }`} />
-          <span className="relative flex justify-center items-center gap-2 text-black dark:text-white group-hover:text-black transition-colors font-medium text-sm">
+          <span className="relative flex justify-center items-center gap-2 text-black dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors font-bold text-sm">
             {sendStatus === 'pending' ? (
               <>
                 <span>Enviando</span>
                 <div className="flex gap-1">
-                  <div className="w-1 h-1 rounded-full animate-bounce bg-black dark:bg-white group-hover:bg-black" />
-                  <div className="w-1 h-1 rounded-full animate-bounce delay-75 bg-black dark:bg-white group-hover:bg-black" />
-                  <div className="w-1 h-1 rounded-full animate-bounce delay-150 bg-black dark:bg-white group-hover:bg-black" />
+                  <div className="w-1 h-1 rounded-full animate-bounce bg-black dark:bg-white" />
+                  <div className="w-1 h-1 rounded-full animate-bounce delay-75 bg-black dark:bg-white" />
+                  <div className="w-1 h-1 rounded-full animate-bounce delay-150 bg-black dark:bg-white" />
                 </div>
               </>
             ) : (

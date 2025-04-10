@@ -31,20 +31,20 @@ const Navigation: React.FC<NavigationProps> = ({
   return (
     <>
       {/* Header con fondo transparente */}
-      <header className="fixed w-full p-4 md:p-8 flex justify-between items-center bg-transparent z-[100]">
+      <header className="fixed w-full p-2 md:p-4 flex justify-between items-center bg-transparent z-[100]">
         {/* Logo simplificado */}
-        <div className="text-lg font-bold text-black dark:text-white" style={{color: mobileMenuOpen || isDark ? '#ffffff' : '#000000'}}>CF</div>
+        <div className="text-xs font-bold text-black dark:text-white" style={{color: mobileMenuOpen || isDark ? '#ffffff' : '#000000'}}>CF</div>
         
         {/* Navegación de escritorio y botón de menú móvil */}
         <div className="flex items-center">
           {/* Navegación en escritorio - oculta en móvil */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-4">
             <ThemeToggle />
             
             {/* Botones de navegación directa sin mapeo */}
             <button 
               onClick={() => handleNavClick('servicios')}
-              className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
+              className="text-xs cursor-pointer z-[101] font-bold text-black dark:text-white"
               style={{pointerEvents: 'all'}}
             >
               Servicios
@@ -52,7 +52,7 @@ const Navigation: React.FC<NavigationProps> = ({
             
             <button 
               onClick={() => handleNavClick('proyectos')}
-              className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
+              className="text-xs cursor-pointer z-[101] font-bold text-black dark:text-white"
               style={{pointerEvents: 'all'}}
             >
               Proyectos
@@ -60,7 +60,7 @@ const Navigation: React.FC<NavigationProps> = ({
             
             <button 
               onClick={() => handleNavClick('contacto')}
-              className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
+              className="text-xs cursor-pointer z-[101] font-bold text-black dark:text-white"
               style={{pointerEvents: 'all'}}
             >
               Contacto
@@ -68,7 +68,7 @@ const Navigation: React.FC<NavigationProps> = ({
             
             <button 
               onClick={handleChatClick}
-              className="text-base cursor-pointer z-[101] font-bold text-black dark:text-white"
+              className="text-xs cursor-pointer z-[101] font-bold text-black dark:text-white"
               style={{pointerEvents: 'all'}}
             >
               IA
@@ -76,22 +76,22 @@ const Navigation: React.FC<NavigationProps> = ({
           </nav>
           
           {/* ThemeToggle y botón hamburguesa en móvil */}
-          <div className="flex items-center gap-4 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
             <button 
               onClick={toggleMobileMenu}
-              className="block relative w-8 h-6 cursor-pointer z-[101]"
+              className="block relative w-6 h-4 cursor-pointer z-[101]"
               aria-label="Menú de navegación"
               style={{pointerEvents: 'all'}}
             >
               <span 
-                className={`absolute left-0 top-0 h-0.5 w-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`} style={{backgroundColor: mobileMenuOpen ? '#ffffff' : isDark ? '#ffffff' : '#000000'}}
+                className={`absolute left-0 top-0 h-0.5 w-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} style={{backgroundColor: mobileMenuOpen ? '#ffffff' : isDark ? '#ffffff' : '#000000'}}
               ></span>
               <span 
-                className={`absolute left-0 top-[11px] h-0.5 w-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} style={{backgroundColor: mobileMenuOpen ? '#ffffff' : isDark ? '#ffffff' : '#000000'}}
+                className={`absolute left-0 top-[7px] h-0.5 w-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} style={{backgroundColor: mobileMenuOpen ? '#ffffff' : isDark ? '#ffffff' : '#000000'}}
               ></span>
               <span 
-                className={`absolute left-0 bottom-0 h-0.5 w-full transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`} style={{backgroundColor: mobileMenuOpen ? '#ffffff' : isDark ? '#ffffff' : '#000000'}}
+                className={`absolute left-0 bottom-0 h-0.5 w-full transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} style={{backgroundColor: mobileMenuOpen ? '#ffffff' : isDark ? '#ffffff' : '#000000'}}
               ></span>
             </button>
           </div>

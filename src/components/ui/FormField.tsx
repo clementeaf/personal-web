@@ -17,8 +17,8 @@ const FormField: React.FC<FormFieldProps> = ({
 }) => {
   const { text, textSecondary } = useThemeColors();
   
-  // Clases con bordes más definidos y mejor contraste
-  const inputClasses = "w-full bg-transparent border-b-2 border-black/30 border-black/40 px-0 py-2 focus:outline-none focus:border-black dark:border-white/40 peer placeholder-transparent";
+  // Clases con bordes negros sólidos para mayor visibilidad
+  const inputClasses = "w-full bg-transparent border-b-2 border-black dark:border-white px-0 py-2 focus:outline-none focus:border-black dark:focus:border-white peer placeholder-transparent";
   
   // Etiqueta de campo mejorada para mayor visibilidad
   const labelClasses = "absolute left-0 -top-3 text-xs font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:font-medium peer-focus:text-xs transition-all";
@@ -68,7 +68,7 @@ const FormField: React.FC<FormFieldProps> = ({
       
       {/* Indicador de campo activo */}
       <div 
-        className={`h-0.5 w-0 bg-black dark:bg-blue-500 absolute bottom-0 left-0 transition-all duration-300 ${
+        className={`h-0.5 w-0 bg-black dark:bg-white absolute bottom-0 left-0 transition-all duration-300 ${
           value ? 'w-full' : ''
         }`}
       />

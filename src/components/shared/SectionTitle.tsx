@@ -8,7 +8,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title }) => {
 
   return (
     <h2 
-      className="text-3xl sm:text-4xl font-bold mb-8 pt-16 md:pt-0" 
+      className="text-2xl sm:text-3xl font-bold mb-6" 
       style={{ color: isDark ? '#ffffff' : '#000000' }}
     >
       {title}

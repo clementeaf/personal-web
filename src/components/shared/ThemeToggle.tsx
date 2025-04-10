@@ -5,15 +5,18 @@ import { ThemeToggleProps } from '@/types';
 const ThemeToggle: React.FC<ThemeToggleProps> = () => {
   const { theme, setTheme } = useTheme();
   const isDark = theme === 'dark';
-  
+
+  const toggleTheme = () => {
+    setTheme(isDark ? 'light' : 'dark');
+  };
+
   return (
     <button 
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)' }}
-      className="text-base font-normal tracking-wider transition-colors hover:text-black dark:hover:text-white"
-      aria-label="Cambiar tema"
+      onClick={toggleTheme}
+      className="text-xs flex items-center font-medium"
+      aria-label={`Cambiar a modo ${isDark ? 'claro' : 'oscuro'}`}
     >
-      {theme === 'dark' ? 'Oscuro' : 'Claro'}
+      {isDark ? 'Claro' : 'Oscuro'}
     </button>
   );
 };

@@ -37,7 +37,7 @@ const HomeView: React.FC<HomeViewProps> = ({ isActive }) => {
     <AnimatePresence>
       {isActive && (
         <motion.div
-          className="fixed inset-0 flex flex-col justify-center"
+          className="fixed inset-0 flex flex-col justify-start pt-16 sm:pt-20 md:pt-24"
           initial="hidden"
           animate="visible"
           exit="exit"
