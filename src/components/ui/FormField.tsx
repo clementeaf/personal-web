@@ -17,11 +17,17 @@ const FormField: React.FC<FormFieldProps> = ({
 }) => {
   const { text, textSecondary } = useThemeColors();
   
-  // Clases con bordes negros sólidos para mayor visibilidad
-  const inputClasses = "w-full bg-transparent border-b-2 border-black dark:border-white px-0 py-2 focus:outline-none focus:border-black dark:focus:border-white peer placeholder-transparent";
+  // Clases base compartidas
+  const baseClasses = "w-full px-3 py-2 focus:outline-none bg-transparent peer placeholder-transparent";
+  
+  // Clases específicas para textarea
+  const textareaClasses = `${baseClasses} border border-gray-300 dark:border-gray-600 rounded-md focus:border-black dark:focus:border-white`;
+  
+  // Clases específicas para inputs de texto
+  const inputClasses = `${baseClasses} border-b border-gray-300 dark:border-gray-600 focus:border-black dark:focus:border-white`;
   
   // Etiqueta de campo mejorada para mayor visibilidad
-  const labelClasses = "absolute left-0 -top-3 text-xs font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:font-medium peer-focus:text-xs transition-all";
+  const labelClasses = "absolute left-3 -top-2.5 text-xs font-medium peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-placeholder-shown:top-2.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:font-medium transition-all";
   
   const id = `field-${name}`;
   
@@ -36,7 +42,7 @@ const FormField: React.FC<FormFieldProps> = ({
           onChange={onChange}
           rows={rows}
           style={{ color: text }}
-          className={`${inputClasses} resize-none`}
+          className={`${textareaClasses} resize-none`}
           placeholder={label}
           disabled={disabled}
           aria-label={label}
@@ -66,9 +72,9 @@ const FormField: React.FC<FormFieldProps> = ({
         {label}{required && <span className="text-red-500 ml-1">*</span>}
       </label>
       
-      {/* Indicador de campo activo */}
+      {/* Indicador de campo activo con mayor contraste */}
       <div 
-        className={`h-0.5 w-0 bg-black dark:bg-white absolute bottom-0 left-0 transition-all duration-300 ${
+        className={`h-0.5 w-0 bg-gray-800 dark:bg-white absolute bottom-0 left-0 transition-all duration-300 ${
           value ? 'w-full' : ''
         }`}
       />

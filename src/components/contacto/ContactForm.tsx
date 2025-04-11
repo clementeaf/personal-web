@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useThemeColors } from '@/hooks/useThemeColors';
-import { FormState, SendStatus, ContactFormProps } from '@/types';
+import { FormState, SendStatus } from '@/types';
 import FormField from '@/components/ui/FormField';
 import StatusMessage from '@/components/ui/StatusMessage';
 import Card from '../shared/Card';
@@ -8,7 +8,7 @@ import Card from '../shared/Card';
 /**
  * Componente principal de formulario de contacto
  */
-const ContactForm: React.FC<ContactFormProps> = () => {
+const ContactForm: React.FC = () => {
   const [formState, setFormState] = useState<FormState>({
     name: '',
     email: '',
@@ -44,13 +44,13 @@ const ContactForm: React.FC<ContactFormProps> = () => {
   const isFormDisabled = sendStatus === 'pending' || sendStatus === 'success';
 
   return (
-    <Card className="p-4 shadow-md dark:shadow-lg">
-      <form onSubmit={handleSubmit} className="space-y-4" aria-label="Formulario de contacto">
-        <div className="mb-3">
-          <h3 className="text-lg font-semibold mb-1" style={{ color: text }}>
+    <Card className="p-6 shadow-md dark:shadow-lg">
+      <form onSubmit={handleSubmit} className="space-y-5" aria-label="Formulario de contacto">
+        <div className="mb-4">
+          <h3 className="text-xl font-semibold mb-2" style={{ color: text }}>
             Envíame un mensaje
           </h3>
-          <p className="text-xs" style={{ color: textSecondary }}>
+          <p className="text-sm" style={{ color: textSecondary }}>
             Completa el formulario para ponerte en contacto conmigo
           </p>
         </div>
@@ -94,13 +94,14 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         <button
           type="submit"
           disabled={isFormDisabled}
-          className="w-full group relative overflow-hidden px-6 py-2 rounded-lg border-2 border-black dark:border-white hover:bg-gray-50 dark:hover:bg-white/10 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+          className="w-full group relative overflow-hidden px-6 py-3 rounded-md border border-gray-300 dark:border-gray-600 hover:border-black dark:hover:border-white transition-colors disabled:opacity-70 disabled:cursor-not-allowed bg-transparent"
+          style={{ color: text }}
           aria-label="Enviar mensaje"
         >
           <div className={`absolute inset-0 bg-black/5 dark:bg-white/5 transition-transform duration-300 ${
             sendStatus === 'pending' ? 'translate-x-0' : '-translate-x-full'
           }`} />
-          <span className="relative flex justify-center items-center gap-2 text-black dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors font-bold text-sm">
+          <span className="relative flex justify-center items-center gap-2 font-bold text-sm">
             {sendStatus === 'pending' ? (
               <>
                 <span>Enviando</span>
@@ -114,7 +115,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               <>
                 <span>Enviar mensaje</span>
                 <svg
-                  className="w-3 h-3 transform transition-transform group-hover:translate-x-1"
+                  className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
