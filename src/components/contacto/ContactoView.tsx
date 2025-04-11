@@ -4,7 +4,7 @@ import ContactForm from './ContactForm';
 import ContactInfo from './ContactInfo';
 import { ContactoViewProps } from '@/types';
 
-const ContactoView: React.FC<ContactoViewProps> = ({ isActive, onOpenChat }) => {
+const ContactoView: React.FC<ContactoViewProps> = ({ isActive }) => {
   return (
     <div className={`fixed inset-0 flex flex-col justify-start pt-16 sm:pt-20 md:pt-24 transition-all duration-500 ${
       isActive ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-8 pointer-events-none'
@@ -18,7 +18,7 @@ const ContactoView: React.FC<ContactoViewProps> = ({ isActive, onOpenChat }) => 
               <ContactForm />
             </div>
             <div className="order-1 md:order-2">
-              <ContactInfo onOpenChat={onOpenChat} />
+              <ContactInfo />
             </div>
           </div>
         </div>

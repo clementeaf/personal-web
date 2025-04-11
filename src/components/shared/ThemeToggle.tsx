@@ -13,7 +13,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = () => {
   return (
     <button 
       onClick={toggleTheme}
-      className="text-xs flex items-center font-medium"
+      className={`text-s flex items-center font-medium ${isDark ? 'text-white' : 'text-gray-500 hover:text-black'}`}
       aria-label={`Cambiar a modo ${isDark ? 'claro' : 'oscuro'}`}
     >
       {isDark ? 'Claro' : 'Oscuro'}

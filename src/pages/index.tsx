@@ -27,11 +27,6 @@ const ContactoView = dynamic(() => import("../components/contacto/ContactoView")
   loading: () => <div className="animate-pulse">Cargando...</div>
 });
 
-const ChatAI = dynamic(() => import("../components/ChatAI"), {
-  ssr: false,
-  loading: () => <div className="fixed right-5 bottom-5 p-4 bg-black/10 dark:bg-white/10 rounded-full animate-pulse"></div>
-});
-
 const geist = Geist({
   subsets: ["latin"],
   weight: ["100", "400", "700"],
@@ -39,7 +34,6 @@ const geist = Geist({
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
-  const [isChatOpen, setIsChatOpen] = useState(false);
   const { setTheme } = useTheme();
   
   // Sistema de navegación centralizado
@@ -49,12 +43,12 @@ export default function Home() {
   
   useEffect(() => {
     setMounted(true);
-    // Forzar el tema claro al inicio
     setTheme('light');
   }, [setTheme]);
 
+  // Función para el chat (ahora vacía ya que se eliminó la funcionalidad)
   const handleOpenChat = useCallback(() => {
-    setIsChatOpen(true);
+    console.log('Funcionalidad de chat deshabilitada');
   }, []);
 
   return (
@@ -73,7 +67,6 @@ export default function Home() {
           <Navigation 
             currentView={currentView} 
             onChangeView={navigateTo} 
-            onOpenChat={handleOpenChat}
           />
         )}
 
@@ -84,11 +77,8 @@ export default function Home() {
           <ProyectosView isActive={currentView === 'proyectos'} />
           <ContactoView 
             isActive={currentView === 'contacto'} 
-            onOpenChat={handleOpenChat}
           />
         </main>
-
-        <ChatAI isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
       </div>
     </ThemeProvider>
   );

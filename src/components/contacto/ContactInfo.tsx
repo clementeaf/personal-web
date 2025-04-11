@@ -1,14 +1,13 @@
 import React from 'react';
 import Card from '../shared/Card';
 import { useThemeColors } from '@/hooks/useThemeColors';
-import { ContactInfoProps } from '@/types';
 import ContactItem from '../ui/ContactItem';
-import { EmailIcon, LinkedInIcon, GitHubIcon, ArrowRightIcon } from '../ui/icons/ContactIcons';
+import { EmailIcon, LinkedInIcon, GitHubIcon } from '../ui/icons/ContactIcons';
 
 /**
  * Componente que muestra información de contacto y opción de chat
  */
-const ContactInfo: React.FC<ContactInfoProps> = ({ onOpenChat }) => {
+const ContactInfo: React.FC = () => {
   const { text, textSecondary } = useThemeColors();
 
   return (
@@ -45,14 +44,6 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ onOpenChat }) => {
         <p style={{ color: textSecondary }} className="text-sm md:text-base leading-relaxed mb-3 md:mb-4">
           También puedes contactarme a través del asistente IA. Estará encantado de ayudarte y responder tus preguntas.
         </p>
-        <button 
-          onClick={onOpenChat}
-          style={{ color: textSecondary }}
-          className="group flex items-center gap-2 hover:text-black dark:hover:text-white transition-colors"
-        >
-          <span>Iniciar chat</span>
-          <ArrowRightIcon />
-        </button>
       </Card>
     </div>
   );

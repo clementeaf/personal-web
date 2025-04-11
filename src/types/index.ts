@@ -74,13 +74,11 @@ export interface ProyectosViewProps {
 
 export interface ContactoViewProps {
   isActive: boolean;
-  onOpenChat: () => void;
 }
 
 export interface NavigationProps {
   currentView: ViewName;
   onChangeView: (view: ViewName) => void;
-  onOpenChat: () => void;
 }
 
 export interface SectionTitleProps {
@@ -91,10 +89,6 @@ export interface CardProps {
   children: ReactNode;
   className?: string;
   onClick?: () => void;
-}
-
-export interface ContactFormProps {
-  // Sin props adicionales por ahora
 }
 
 export interface FormFieldProps {
@@ -112,10 +106,6 @@ export interface StatusMessageProps {
   status: SendStatus;
   successMessage: string;
   errorMessage: string;
-}
-
-export interface ContactInfoProps {
-  onOpenChat: () => void;
 }
 
 export interface ContactItemProps {
@@ -147,3 +137,11 @@ export interface SEOProps {
   description?: string;
   canonical?: string;
 } 
+
+export interface ButtonProps {
+  handleNav: (view: ViewName) => void;
+  children: React.ReactNode;
+  view: ViewName;
+  currentView: ViewName;
+  isDark: boolean;
+}

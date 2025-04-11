@@ -43,7 +43,7 @@ const HomeView: React.FC<HomeViewProps> = ({ isActive }) => {
           exit="exit"
           variants={containerVariants}
         >
-          <div className="container mx-auto px-4 sm:px-6 md:px-8">
+          <div className="container mx-auto px-4 sm:px-6 md:px-8 mt-32 ml-4">
             <div className="max-w-2xl mx-auto md:mx-0">
               <motion.h1 
                 className="text-[2.5rem] sm:text-[4rem] md:text-[5rem] lg:text-[7rem] xl:text-[8rem] font-bold leading-[0.9] sm:leading-[0.95] md:leading-none tracking-tight"
