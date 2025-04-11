@@ -21,10 +21,10 @@ const FormField: React.FC<FormFieldProps> = ({
   const baseClasses = "w-full px-3 py-2 focus:outline-none bg-transparent peer placeholder-transparent";
   
   // Clases específicas para textarea
-  const textareaClasses = `${baseClasses} border border-gray-300 dark:border-gray-600 rounded-md focus:border-black dark:focus:border-white`;
+  const textareaClasses = `${baseClasses} border border-gray-300 dark:border-gray-400 rounded-md focus:border-black dark:focus:border-white`;
   
   // Clases específicas para inputs de texto
-  const inputClasses = `${baseClasses} border-b border-gray-300 dark:border-gray-600 focus:border-black dark:focus:border-white`;
+  const inputClasses = `${baseClasses} border-b border-gray-300 dark:border-gray-400 focus:border-black dark:focus:border-white`;
   
   // Etiqueta de campo mejorada para mayor visibilidad
   const labelClasses = "absolute left-3 -top-2.5 text-xs font-medium peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-placeholder-shown:top-2.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:font-medium transition-all";

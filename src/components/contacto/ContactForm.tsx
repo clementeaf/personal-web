@@ -94,7 +94,7 @@ const ContactForm: React.FC = () => {
         <button
           type="submit"
           disabled={isFormDisabled}
-          className="w-full group relative overflow-hidden px-6 py-3 rounded-md border border-gray-300 dark:border-gray-600 hover:border-black dark:hover:border-white transition-colors disabled:opacity-70 disabled:cursor-not-allowed bg-transparent"
+          className="w-full group relative overflow-hidden px-6 py-3 rounded-md border border-gray-300 dark:border-gray-400 hover:border-black dark:hover:border-white transition-colors disabled:opacity-70 disabled:cursor-not-allowed bg-transparent"
           style={{ color: text }}
           aria-label="Enviar mensaje"
         >
